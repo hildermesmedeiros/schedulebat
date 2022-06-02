@@ -22,7 +22,7 @@ set task=%%F
 )
 echo %task%
 
-schtasks /query /fo LIST /tn %task%
+schtasks /query /fo LIST /tn "%task%"
 
 :stopStartQuestion
 echo Do you wish to stop or start the task, type (stopt) or (startt):
@@ -33,7 +33,7 @@ GOTO endBatch
 
 :stopTask
 echo Trying to stop task %task%
-for /F "tokens=* USEBACKQ" %%F IN (`schtasks /change /tn %task% /DISABLE`) do (
+for /F "tokens=* USEBACKQ" %%F IN (`schtasks /change /tn "%task%" /DISABLE`) do (
 set comand=%%F
 )
 echo %comand%
@@ -42,7 +42,7 @@ GOTO endProgram
 
 :startTask
 echo Trying to start task %task%
-for /F "tokens=* USEBACKQ" %%F IN (`schtasks /change /tn %task% /ENABLE`) do (
+for /F "tokens=* USEBACKQ" %%F IN (`schtasks /change /tn "%task%" /ENABLE`) do (
 set comand=%%F
 )
 echo %comand%
